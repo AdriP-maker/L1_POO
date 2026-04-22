@@ -1,0 +1,179 @@
+:root {
+  --color-primario: #8B0000;      /* Rojo vino / corporativo */
+  --color-acento: #D4AF37;        /* Dorado sutil */
+  --color-fondo: #F8F5F0;         /* Beige cálido tipo papel de menú */
+  --color-tarjeta: #FFFFFF;
+  --color-texto: #2C2C2C;
+  --color-texto-secundario: #666666;
+  --color-borde: #E0D8C8;
+  --color-boton: #2E7D32;         /* Verde restaurante */
+  --color-boton-hover: #1B5E20;
+  --sombra: 0 4px 14px rgba(0,0,0,0.08);
+  --radio: 12px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.contenedor {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 35px;
+  padding-bottom: 20px;
+  border-bottom: 3px double var(--color-borde);
+}
+
+header h1 {
+  color: var(--color-primario);
+  font-size: 2.6rem;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+header p {
+  color: var(--color-texto-secundario);
+  font-size: 1.15rem;
+  font-style: italic;
+}
+
+/* Grid de categorías */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-bottom: 35px;
+}
+
+.tarjeta-menu {
+  background: var(--color-tarjeta);
+  border-radius: var(--radio);
+  padding: 22px;
+  box-shadow: var(--sombra);
+  border: 1px solid var(--color-borde);
+}
+
+.tarjeta-menu h2 {
+  color: var(--color-primario);
+  border-bottom: 2px solid var(--color-acento);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  font-size: 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--color-borde);
+  font-size: 1.05rem;
+}
+
+.item-menu:last-child { border-bottom: none; }
+
+.precio {
+  font-weight: 700;
+  color: var(--color-primario);
+  background: #FDF7E6;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* Formulario de cliente */
+.seccion-cliente {
+  background: var(--color-tarjeta);
+  border-radius: var(--radio);
+  padding: 28px;
+  box-shadow: var(--sombra);
+  border: 1px solid var(--color-borde);
+}
+
+.seccion-cliente h2 {
+  color: var(--color-primario);
+  margin-bottom: 22px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.form-grupo {
+  margin-bottom: 18px;
+}
+
+.form-grupo label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+.form-grupo input,
+.form-grupo select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #FAFAFA;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-grupo input:focus,
+.form-grupo select:focus {
+  outline: none;
+  border-color: var(--color-acento);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+}
+
+.boton-calcular {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: var(--color-boton);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  margin-top: 25px;
+  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+}
+
+.boton-calcular:hover {
+  background: var(--color-boton-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(46, 125, 50, 0.4);
+}
+
+.boton-calcular:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  header h1 { font-size: 2rem; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .item-menu { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .precio { align-self: flex-end; }
+}
