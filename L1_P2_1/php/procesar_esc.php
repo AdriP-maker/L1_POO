@@ -39,7 +39,7 @@ if (count($productos) == 0) {
 } catch (Exception $e) {
     echo "<script>
         alert('" . $e->getMessage() . "');
-        window.location.href='index.php';
+        window.location.href='../../L1_P2_1.php';
     </script>";
     exit();
 }
@@ -77,7 +77,7 @@ if (count($productos) == 0) {
 
 
 <!--boton para volver al formulario principal-->
-<a href="index.php" class="btn btn-secondary mt-3"> Volver a la tienda</a>
+<a href="../../L1_P2_1.php" class="btn btn-secondary mt-3"> Volver a la tienda</a>
 
 </div>
 

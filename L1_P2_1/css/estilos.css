@@ -182,3 +182,58 @@ footer {
     color: #6c757d;
     font-weight: 500;
 }
+
+/* NAVBAR PERSONALIZADO */
+.navbar-custom {
+    background-color: #0d2c54; /* tu azul */
+    padding: 12px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Contenedor */
+.navbar-custom .container {
+    max-width: 1100px;
+}
+
+/* Logo */
+.navbar-logo {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Links */
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+}
+
+.navbar-links li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+/* Hover */
+.navbar-links li a:hover {
+    color: #cbd5e1;
+}
+
+.product-card {
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.price {
+    color: #0d2c54;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
