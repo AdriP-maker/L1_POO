@@ -1,0 +1,184 @@
+/* estilo generales*/
+body {
+    background: linear-gradient(135deg, #eef2f7, #d9e2ec);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+}
+
+/*titulo del trabajo */
+h2 {
+    text-align: center;
+    color: #0b2545;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* cards*/
+.card {
+    border-radius: 16px;
+    border: none;
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+}
+
+/* secciones */
+h4 {
+    color: #13315c;
+    font-weight: 600;
+    margin-top: 15px;
+    border-left: 4px solid #134074;
+    padding-left: 10px;
+}
+
+/* para los inputs o entradas */
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #134074;
+    box-shadow: 0 0 5px rgba(19, 64, 116, 0.3);
+}
+
+/* boton principal */
+.btn-primary {
+    background: linear-gradient(135deg, #0b2545, #134074);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #081c33, #0b2545);
+    transform: translateY(-1px);
+}
+
+/* boton volver  */
+.btn-secondary {
+    background-color: #6c757d;
+    border-radius: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* tabla de resultado de compra*/
+.table {
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: white !important;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* encabezado */
+.table thead th {
+    background: linear-gradient(135deg, #0b2545, #13315c) !important;
+    color: white !important;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    border: none !important;
+}
+
+/* esquinas redondeadas */
+.table thead tr th:first-child {
+    border-top-left-radius: 12px;
+}
+.table thead tr th:last-child {
+    border-top-right-radius: 12px;
+}
+
+/* celdas */
+.table th, 
+.table td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+/* filas */
+.table tbody tr {
+    transition: 0.2s;
+    background-color: white;
+}
+
+/* hover */
+.table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* bordes suaves */
+.table td {
+    border-color: #dee2e6;
+}
+
+/* primera columna destacada */
+.table td:first-child {
+    font-weight: 500;
+    color: #0b2545;
+}
+
+/* RESUMEN (Subtotal / Total)*/
+h4, h5 {
+    color: #0b2545;
+}
+
+h4 {
+    border-left: 4px solid #0b2545;
+    padding-left: 10px;
+    margin-top: 15px;
+}
+
+/* footer */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    background: linear-gradient(135deg, #0b2545, #13315c);
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 14px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+ */
+.card, .btn, .form-control {
+    transition: all 0.3s ease;
+}
+
+/* migas de pan */
+.custom-breadcrumb {
+    background-color: #ffffff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Links */
+.custom-breadcrumb .breadcrumb-item a {
+    color: #0d2c54; /* tu azul oscuro */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.custom-breadcrumb .breadcrumb-item a:hover {
+    text-decoration: underline;
+}
+
+/* Separador (*/
+.custom-breadcrumb .breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+    color: #6c757d;
+}
+
+/* Página actual */
+.custom-breadcrumb .breadcrumb-item.active {
+    color: #6c757d;
+    font-weight: 500;
+}
