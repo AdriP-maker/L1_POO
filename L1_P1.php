@@ -6,7 +6,7 @@
     <title>Cafetería UTP - Realizar Pedido</title>
     <!-- Bootstrap 3.4.1 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="L1_P1/css/estilos.css">
 </head>
 <body>
     <div class="container contenedor">
