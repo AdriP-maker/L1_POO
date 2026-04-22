@@ -1,179 +1,341 @@
+/* Variables globales */
 :root {
-  --color-primario: #8B0000;      /* Rojo vino / corporativo */
-  --color-acento: #D4AF37;        /* Dorado sutil */
-  --color-fondo: #F8F5F0;         /* Beige cálido tipo papel de menú */
-  --color-tarjeta: #FFFFFF;
-  --color-texto: #2C2C2C;
-  --color-texto-secundario: #666666;
-  --color-borde: #E0D8C8;
-  --color-boton: #2E7D32;         /* Verde restaurante */
-  --color-boton-hover: #1B5E20;
-  --sombra: 0 4px 14px rgba(0,0,0,0.08);
-  --radio: 12px;
+    --color-primario: #8B0000;
+    --color-acento: #D4AF37;
+    --color-fondo: #F8F5F0;
+    --color-tarjeta: #FFFFFF;
+    --color-texto: #2C2C2C;
+    --color-texto-secundario: #666666;
+    --color-borde: #E0D8C8;
+    --color-boton: #2E7D32;
+    --color-boton-hover: #1B5E20;
+    --sombra: 0 4px 14px rgba(0, 0, 0, 0.08);
+    --radio: 12px;
 }
 
+/* Reset básico */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+/* Cuerpo general */
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  line-height: 1.6;
-  padding: 20px;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    padding: 20px;
 }
 
+/* Contenedor principal */
 .contenedor {
-  max-width: 900px;
-  margin: 0 auto;
+    max-width: 960px;
+    margin: 0 auto;
 }
 
-/* Header */
+/* ── HEADER ── */
 header {
-  text-align: center;
-  margin-bottom: 35px;
-  padding-bottom: 20px;
-  border-bottom: 3px double var(--color-borde);
+    text-align: center;
+    margin-bottom: 35px;
+    padding-bottom: 20px;
+    border-bottom: 3px double var(--color-borde);
 }
 
 header h1 {
-  color: var(--color-primario);
-  font-size: 2.6rem;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
+    color: var(--color-primario);
+    font-size: 2.6rem;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
 }
 
 header p {
-  color: var(--color-texto-secundario);
-  font-size: 1.15rem;
-  font-style: italic;
+    color: var(--color-texto-secundario);
+    font-size: 1.15rem;
+    font-style: italic;
 }
 
-/* Grid de categorías */
+/* ── MENÚ VISUAL (cards de referencia) ── */
 .menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  margin-bottom: 35px;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 35px;
+    width: 100%;
+    float: none !important;
 }
 
+/* Tarjeta de categoría */
 .tarjeta-menu {
-  background: var(--color-tarjeta);
-  border-radius: var(--radio);
-  padding: 22px;
-  box-shadow: var(--sombra);
-  border: 1px solid var(--color-borde);
+    background: var(--color-tarjeta);
+    border-radius: var(--radio);
+    padding: 22px;
+    box-shadow: var(--sombra);
+    border: 1px solid var(--color-borde);
 }
 
+/* Título de categoría */
 .tarjeta-menu h2 {
-  color: var(--color-primario);
-  border-bottom: 2px solid var(--color-acento);
-  padding-bottom: 8px;
-  margin-bottom: 16px;
-  font-size: 1.35rem;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    color: var(--color-primario);
+    border-bottom: 2px solid var(--color-acento);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    font-size: 1.35rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
+/* Fila de ítem */
 .item-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px dashed var(--color-borde);
-  font-size: 1.05rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--color-borde);
+    font-size: 1.05rem;
 }
 
-.item-menu:last-child { border-bottom: none; }
+.item-menu:last-child {
+    border-bottom: none;
+}
 
+/* Badge de precio */
 .precio {
-  font-weight: 700;
-  color: var(--color-primario);
-  background: #FDF7E6;
-  padding: 2px 8px;
-  border-radius: 6px;
-  font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    background: #FDF7E6;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.95rem;
 }
 
-/* Formulario de cliente */
+/* ── CARDS DEL MENÚ CON IMAGEN ── */
+
+/* Card completa */
+.tarjeta-menu-card {
+    border-radius: var(--radio) !important;
+    border: 1px solid var(--color-borde) !important;
+    box-shadow: var(--sombra) !important;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+/* Efecto hover en la card */
+.tarjeta-menu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.13) !important;
+}
+
+/* Imagen superior de la card */
+.img-menu {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--radio) var(--radio) 0 0;
+}
+
+/* Encabezado rojo de la card */
+.tarjeta-menu-card .panel-heading {
+    background: var(--color-primario) !important;
+    border: none !important;
+    padding: 12px 16px;
+}
+
+/* Título en el encabezado */
+.titulo-card {
+    color: #fff !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+}
+
+/* Filas de ítems */
+.tarjeta-menu-card .list-group-item {
+    border-color: var(--color-borde) !important;
+    padding: 10px 16px;
+    font-size: 1rem;
+    background: var(--color-tarjeta);
+}
+
+/* ── SECCIÓN PEDIDO / CLIENTE ── */
 .seccion-cliente {
-  background: var(--color-tarjeta);
-  border-radius: var(--radio);
-  padding: 28px;
-  box-shadow: var(--sombra);
-  border: 1px solid var(--color-borde);
+    background: var(--color-tarjeta);
+    border-radius: var(--radio);
+    padding: 32px;
+    box-shadow: var(--sombra);
+    border: 1px solid var(--color-borde);
+    margin-bottom: 30px;
 }
 
-.seccion-cliente h2 {
-  color: var(--color-primario);
-  margin-bottom: 22px;
-  text-align: center;
-  font-size: 1.5rem;
+/* Título principal del formulario */
+.seccion-cliente > h2 {
+    color: var(--color-primario);
+    margin-bottom: 24px;
+    text-align: center;
+    font-size: 1.6rem;
+    letter-spacing: 0.5px;
 }
 
+/* Subtítulos de sección (Productos / Datos) */
+.subtitulo-seccion {
+    color: var(--color-primario);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 28px 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+/* Inicia grupo de pedido por categoría */
+.grupo-pedido {
+    background: #FAFAF7;
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+/* Título dentro del grupo de pedido */
+.titulo-categoria {
+    color: var(--color-primario);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed var(--color-acento);
+}
+
+/* Precio junto al label del ítem */
+.precio-label {
+    font-weight: 700;
+    color: var(--color-primario);
+    background: #FDF7E6;
+    padding: 1px 7px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    margin-left: 6px;
+}
+
+/* Input de cantidad */
+.input-cantidad {
+    max-width: 100px;
+}
+
+/* Caja de subtotal en tiempo real */
+.subtotal-box {
+    background: #FDF7E6;
+    border: 1px solid var(--color-acento);
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 1.1rem;
+    text-align: right;
+    color: var(--color-texto);
+    margin: 20px 0 8px;
+}
+
+.subtotal-box strong {
+    color: var(--color-primario);
+    font-size: 1.25rem;
+}
+
+/* ── CAMPOS DEL FORMULARIO ── */
 .form-grupo {
-  margin-bottom: 18px;
+    margin-bottom: 16px;
 }
 
 .form-grupo label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 500;
-  color: var(--color-texto);
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--color-texto);
+    font-size: 0.95rem;
 }
 
+/* Inputs y selects */
 .form-grupo input,
 .form-grupo select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--color-borde);
-  border-radius: 8px;
-  font-size: 1rem;
-  background: #FAFAFA;
-  transition: border 0.2s, box-shadow 0.2s;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #FAFAFA;
+    transition: border 0.2s, box-shadow 0.2s;
 }
 
+/* Estado focus */
 .form-grupo input:focus,
 .form-grupo select:focus {
-  outline: none;
-  border-color: var(--color-acento);
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+    outline: none;
+    border-color: var(--color-acento);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
 }
 
+/* Botón principal */
 .boton-calcular {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  background: var(--color-boton);
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.15rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-  margin-top: 25px;
-  box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: var(--color-boton);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    margin-top: 25px;
+    box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
 }
 
 .boton-calcular:hover {
-  background: var(--color-boton-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(46, 125, 50, 0.4);
+    background: var(--color-boton-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(46, 125, 50, 0.4);
 }
 
 .boton-calcular:active {
-  transform: translateY(0);
+    transform: translateY(0);
 }
 
-/* Responsive */
+/* ── FOOTER ── */
+footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid var(--color-borde);
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  header h1 { font-size: 2rem; }
-  .menu-grid { grid-template-columns: 1fr; }
-  .item-menu { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .precio { align-self: flex-end; }
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .item-menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .precio {
+        align-self: flex-end;
+    }
+
+    .input-cantidad {
+        max-width: 100%;
+    }
+
+    .subtotal-box {
+        text-align: center;
+    }
 }
