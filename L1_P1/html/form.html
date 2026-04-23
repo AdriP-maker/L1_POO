@@ -1,7 +1,13 @@
 <!-- Inicia sección del cliente y pedido -->
 <div class="seccion-cliente">
     <h2>🛒 Realizar Pedido</h2>
-    <form method="POST" action="procesar.php">
+
+    <!-- Mensaje de error de validación -->
+    <div id="alerta-error" style="display:none; background:#fdecea; border:1px solid #e57373; color:#b71c1c;
+         border-radius:8px; padding:12px 18px; margin-bottom:18px; font-size:0.95rem; line-height:1.7;">
+    </div>
+
+    <form method="POST" action="L1_P1.php" id="form-pedido" novalidate>
 
         <!-- Selección de items del menú -->
         <h3 class="subtitulo-seccion">📋 Elige tus productos</h3>
@@ -72,14 +78,14 @@
             <div class="col-md-4 col-sm-12">
                 <div class="form-grupo">
                     <label for="edad">Edad</label>
-                    <input type="number" class="form-control" id="edad" name="edad" min="0" max="120" required>
+                    <input type="number" class="form-control" id="edad" name="edad" min="0" max="120">
                 </div>
             </div>
             <div class="col-md-4 col-sm-12">
                 <div class="form-grupo">
                     <label for="sexo">Sexo</label>
-                    <select class="form-control" id="sexo" name="sexo" required>
-                        <option selected disabled>Seleccione</option>
+                    <select class="form-control" id="sexo" name="sexo">
+                        <option value="">Seleccione</option>
                         <option value="masculino">Masculino</option>
                         <option value="femenino">Femenino</option>
                     </select>
@@ -88,8 +94,8 @@
             <div class="col-md-4 col-sm-12">
                 <div class="form-grupo">
                     <label for="jubilado">¿Es jubilado?</label>
-                    <select class="form-control" id="jubilado" name="jubilado" required>
-                        <option selected disabled>Seleccione</option>
+                    <select class="form-control" id="jubilado" name="jubilado">
+                        <option value="">Seleccione</option>
                         <option value="no">No</option>
                         <option value="si">Sí</option>
                     </select>
@@ -103,7 +109,6 @@
 </div>
 <!-- Fin sección del cliente y pedido -->
 
-<!-- Script subtotal en tiempo real -->
 <script>
     const precios = {
         sandwich_jamon: 2.25,
@@ -115,6 +120,7 @@
         pie: 2.00
     };
 
+    // ── Subtotal en tiempo real ──────────────────────────────
     function calcularSubtotal() {
         let total = 0;
         for (const [id, precio] of Object.entries(precios)) {
@@ -124,8 +130,71 @@
         document.getElementById('subtotal').textContent = '$' + total.toFixed(2);
     }
 
-    // Escucha cambios en todos los inputs de cantidad
     document.querySelectorAll('.input-cantidad').forEach(input => {
-        input.addEventListener('input', calcularSubtotal);
+        // Evitar negativos al escribir
+        input.addEventListener('input', function () {
+            if (parseInt(this.value) < 0 || this.value === '-') this.value = 0;
+            calcularSubtotal();
+        });
+    });
+
+    // ── Validación antes de enviar ───────────────────────────
+    document.getElementById('form-pedido').addEventListener('submit', function (e) {
+        const errores = [];
+        const alerta  = document.getElementById('alerta-error');
+
+        // 1. Al menos un producto seleccionado
+        const totalProductos = Object.keys(precios)
+            .reduce((sum, id) => sum + (parseInt(document.getElementById(id).value) || 0), 0);
+        if (totalProductos <= 0) {
+            errores.push('Debes seleccionar al menos un producto.');
+        }
+
+        // 2. Cantidades no negativas (doble check)
+        Object.keys(precios).forEach(id => {
+            const val = parseInt(document.getElementById(id).value) || 0;
+            if (val < 0) errores.push('Las cantidades no pueden ser negativas.');
+        });
+
+        // 3. Edad completa y válida
+        const edad = parseInt(document.getElementById('edad').value);
+        if (!document.getElementById('edad').value || isNaN(edad) || edad < 0 || edad > 120) {
+            errores.push('Ingresa una edad válida (0–100).');
+        }
+
+        // 4. Sexo seleccionado
+        const sexo = document.getElementById('sexo').value;
+        if (!sexo) {
+            errores.push('Selecciona el sexo.');
+        }
+
+        // 5. Jubilado seleccionado
+        const jubilado = document.getElementById('jubilado').value;
+        if (!jubilado) {
+            errores.push('Indica si eres jubilado.');
+        }
+
+        // 6. Validar que la edad corresponda para ser jubilado
+        if (jubilado === 'si' && sexo && !isNaN(edad)) {
+            const edadMinima = (sexo === 'femenino') ? 55 : 60;
+            if (edad < edadMinima) {
+                errores.push(
+                    'No cumples la edad mínima para el descuento de jubilado ' +
+                    '(' + (sexo === 'femenino' ? '55' : '60') + ' años para ' +
+                    (sexo === 'femenino' ? 'mujeres' : 'hombres') + '). ' +
+                    'Cambia la opción de jubilado a "No".'
+                );
+            }
+        }
+
+        // ── Mostrar errores o dejar pasar ───────────────────
+        if (errores.length > 0) {
+            e.preventDefault();
+            alerta.innerHTML = errores.join('<br>');
+            alerta.style.display = 'block';
+            alerta.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+            alerta.style.display = 'none';
+        }
     });
 </script>

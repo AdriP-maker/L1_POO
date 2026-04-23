@@ -1,3 +1,43 @@
+/* ── NAVBAR ── */
+.navbar-cafeteria {
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid #E0D8C8;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+/* Forzar que siempre se vea expandido (nunca colapsado) */
+.navbar-cafeteria .navbar-collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+}
+
+.navbar-cafeteria .navbar-toggle {
+    display: none !important;
+}
+
+.brand-cafeteria {
+    color: #8B0000 !important;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.navbar-cafeteria .navbar-nav > li > a {
+    color: #2C2C2C !important;
+    font-weight: 500;
+}
+
+.navbar-cafeteria .navbar-nav > li > a:hover,
+.navbar-cafeteria .navbar-nav > li.active > a {
+    color: #8B0000 !important;
+    background: transparent !important;
+    border-bottom: 2px solid #8B0000;
+}
+
 /* Variables globales */
 :root {
     --color-primario: #8B0000;
@@ -26,13 +66,14 @@ body {
     background-color: var(--color-fondo);
     color: var(--color-texto);
     line-height: 1.6;
-    padding: 20px;
+    padding: 0;           /* sin padding — el nav necesita pegarse a los bordes */
 }
 
 /* Contenedor principal */
 .contenedor {
     max-width: 960px;
     margin: 0 auto;
+    padding: 20px;        /* el padding va aquí, no en el body */
 }
 
 /* ── HEADER ── */

@@ -7,20 +7,27 @@
     <!-- Bootstrap 3.4.1 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="L1_P1/css/estilos.css">
+    <link rel="stylesheet" href="L1_P1/css/Factura.css">
 </head>
 <body>
-
-    <!-- Navbar full-width fuera del contenedor -->
-    <?php include("L1_P1/html/nav.html"); ?>
-
+       
     <div class="container contenedor">
-
+         <?php include("L1_P1/html/nav.html"); ?>
         <?php include("L1_P1/html/header.html"); ?>
 
         <main>
             <?php include("L1_P1/html/menu.html"); ?>
             <?php include("L1_P1/html/form.html"); ?>
         </main>
+
+        <!-- Factura aparece aquí si se envió el formulario -->
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            require_once 'L1_P1/php/TotalPedido.php';
+            $pedido = new TotalPedido($_POST);
+            include 'L1_P1/php/Factura.php';
+        }
+        ?>
 
         <?php include("L1_P1/html/footer.html"); ?>
 
