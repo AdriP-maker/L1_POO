@@ -19,12 +19,12 @@
                     <div class="form-grupo">
                         <label for="sandwich_jamon">Jamón y queso <span class="precio-label">$2.25</span></label>
                         <input type="number" class="form-control input-cantidad" id="sandwich_jamon"
-                            name="sandwich_jamon" min="0" max="10" value="0">
+                            name="sandwich_jamon" min="0" max="10" value="0" step="1">
                     </div>
                     <div class="form-grupo">
                         <label for="sandwich_pollo">Pollo a la plancha <span class="precio-label">$4.00</span></label>
                         <input type="number" class="form-control input-cantidad" id="sandwich_pollo"
-                            name="sandwich_pollo" min="0" max="10" value="0">
+                            name="sandwich_pollo" min="0" max="10" value="0" step="1">
                     </div>
                 </div>
             </div>
@@ -35,12 +35,12 @@
                     <div class="form-grupo">
                         <label for="cafe">Café con leche <span class="precio-label">$1.00</span></label>
                         <input type="number" class="form-control input-cantidad" id="cafe"
-                            name="cafe" min="0" max="10" value="0">
+                            name="cafe" min="0" max="10" value="0" step="1">
                     </div>
                     <div class="form-grupo">
                         <label for="jugo">Jugo natural <span class="precio-label">$2.00</span></label>
                         <input type="number" class="form-control input-cantidad" id="jugo"
-                            name="jugo" min="0" max="10" value="0">
+                            name="jugo" min="0" max="10" value="0" step="1">
                     </div>
                 </div>
             </div>
@@ -51,17 +51,17 @@
                     <div class="form-grupo">
                         <label for="brownie">Brownie <span class="precio-label">$1.50</span></label>
                         <input type="number" class="form-control input-cantidad" id="brownie"
-                            name="brownie" min="0" max="10" value="0">
+                            name="brownie" min="0" max="10" value="0" step="1">
                     </div>
                     <div class="form-grupo">
                         <label for="galleta">Galleta de avena <span class="precio-label">$1.20</span></label>
                         <input type="number" class="form-control input-cantidad" id="galleta"
-                            name="galleta" min="0" max="10" value="0">
+                            name="galleta" min="0" max="10" value="0" step="1">
                     </div>
                     <div class="form-grupo">
                         <label for="pie">Pie de limón <span class="precio-label">$2.00</span></label>
                         <input type="number" class="form-control input-cantidad" id="pie"
-                            name="pie" min="0" max="10" value="0">
+                            name="pie" min="0" max="10" value="0" step="1">
                     </div>
                 </div>
             </div>
@@ -130,13 +130,29 @@
         document.getElementById('subtotal').textContent = '$' + total.toFixed(2);
     }
 
-    document.querySelectorAll('.input-cantidad').forEach(input => {
-        // Evitar negativos al escribir
-        input.addEventListener('input', function () {
-            if (parseInt(this.value) < 0 || this.value === '-') this.value = 0;
-            calcularSubtotal();
+        document.querySelectorAll('.input-cantidad').forEach(input => {
+
+            input.addEventListener('input', function () {
+
+                // Quitar todo lo que no sea número
+                this.value = this.value.replace(/[^0-9]/g, '');
+
+                // Si queda vacío → poner 0
+                if (this.value === '') this.value = 0;
+
+                // Convertir a entero
+                this.value = parseInt(this.value);
+
+                // Evitar negativos
+                if (this.value < 0) this.value = 0;
+
+                // Limitar máximo
+                if (this.value > 10) this.value = 10;
+
+                calcularSubtotal();
+            });
+
         });
-    });
 
     // ── Validación antes de enviar ───────────────────────────
     document.getElementById('form-pedido').addEventListener('submit', function (e) {
@@ -158,7 +174,7 @@
 
         // 3. Edad completa y válida
         const edad = parseInt(document.getElementById('edad').value);
-        if (!document.getElementById('edad').value || isNaN(edad) || edad < 0 || edad > 120) {
+        if (!document.getElementById('edad').value || isNaN(edad) || edad < 0 || edad > 100) {
             errores.push('Ingresa una edad válida (0–100).');
         }
 
