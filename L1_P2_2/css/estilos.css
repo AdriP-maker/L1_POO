@@ -1,0 +1,40 @@
+#panel-footer { 
+    height: 40px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    height: 200px;
+}
+
+#panel-output{
+    height: 488px;
+}
+
+.panel-footer{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.panel-footer p{
+    margin-top: 10px;
+}
+.img-logo-header {
+    width: 200px;
+}
+
+
+.page-header {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.img-logo-footer{
+    width: 150px;
+}
+
