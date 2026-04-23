@@ -1,43 +1,48 @@
-<div class="col-md-6">
-								<div> <!-- INICIA OUTPUT -->
-									<div class="panel panel-default">
-										<div class="panel-body" id="panel-output">
-											<legend><H1>Total</H1></legend>
-											<div class="table-responsive"> <!-- INICIA TABLA -->
-												<table class="table table-hover">
-													<thead>
-														<tr>
-															<th>Articulo</th>
-															<th>Cantidad</th>
-															<th>Precio unitario</th>
-															<th>Total</th>
-														</tr>
-													</thead>
-													<tbody>
-														<?php
-														try {
-															if (isset($articulos)) {
-																foreach ($articulos as $fila) {
-																	echo "<tr>";
-																	echo "<td>" . $fila[0] . "</td>";
-																	echo "<td>" . $fila[1] . "</td>";
-																	echo "<td>" . number_format($fila[2], 2) . "</td>";
-																	echo "<td>" . number_format($fila[3], 2) . "</td>";
-																	echo "</tr>";
-																}
-																echo "<tr>";
-																echo "<td><h4><strong>Sub total:</strong></h4>".number_format($subtotal, 2). "</td>";
-																echo "<td><h4><strong>Total de compra:</strong></h4>".number_format($totalCompra, 2). "</td>";
-																echo "</tr>";
-															}
-														} catch(Exception $e){ // Termina try catch
-															echo $e->getMessage();
-														}
-														?>
-													</tbody>
-												</table>
-											</div>  <!-- INICIA TABLA -->
-										</div>
-									</div>
-								</div> <!-- TERMINA OUTPUT -->
-							</div>
+<div class="col-md-6"> <!-- Contenedor principal con ancho de 6 columnas (Bootstrap) -->
+    <div>
+        <div class="panel panel-default"> <!-- Panel visual -->
+            <div class="panel-body" id="panel-output"> <!-- Cuerpo del panel donde se muestra la información -->
+                <legend><H1>Total</H1></legend> <!-- Título del panel -->
+
+                <?php if(isset($error)): ?> <!-- Verifica si existe un error -->
+                    <script>alert('<?= $error ?>');</script> <!-- Muestra el error en una alerta -->
+                <?php endif; ?>
+
+                <div class="table-responsive"> <!-- Hace la tabla adaptable a distintos tamaños -->
+                    <table class="table table-hover"> <!-- Tabla con estilo Bootstrap -->
+                        <thead>
+                            <tr>
+                                <th>Articulo</th> <!-- Nombre del producto -->
+                                <th>Cantidad</th> <!-- Cantidad comprada -->
+                                <th>Precio unitario</th> <!-- Precio por unidad -->
+                                <th>Total</th> <!-- Total por producto -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            try {
+                                if (isset($articulos)) { // Verifica si existe el arreglo de artículos
+                                    foreach ($articulos as $fila) { // Recorre cada artículo
+                                        echo "<tr>";
+                                        echo "<td>" . $fila[0] . "</td>"; // Nombre del artículo
+                                        echo "<td>" . $fila[1] . "</td>"; // Cantidad
+                                        echo "<td>" . number_format($fila[2], 2) . "</td>"; // Precio unitario con 2 decimales
+                                        echo "<td>" . number_format($fila[3], 2) . "</td>"; // Total por artículo con 2 decimales
+                                        echo "</tr>";
+                                    }
+                                    echo "<tr>";
+                                    echo "<td><h4><strong>Sub total:</strong></h4>" . number_format($subtotal, 2) . "</td>"; // Muestra el subtotal
+                                    echo "<td><h4><strong>Total de compra:</strong></h4>" . number_format($totalCompra, 2) . "</td>"; // Muestra el total final
+                                    echo "</tr>";
+                                }
+                            } catch(Exception $e){
+                                echo $e->getMessage(); // Muestra el mensaje de error en caso de excepción
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

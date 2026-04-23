@@ -1,3 +1,13 @@
+	<?php
+		session_start();
+		$articulos   = $_SESSION['articulos']   ?? null;
+		$subtotal    = $_SESSION['subtotal']    ?? null;
+		$totalCompra = $_SESSION['totalCompra'] ?? null;
+		$error       = $_SESSION['error']       ?? null;
+
+// Limpiar sesión tras leer los datos
+unset($_SESSION['articulos'], $_SESSION['subtotal'], $_SESSION['totalCompra'], $_SESSION['error']);
+?>
 	<!DOCTYPE html>
 	<html lang="">
 	<head>
@@ -9,12 +19,6 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link rel="stylesheet" href="./L1_P2_2/css/estilos.css">
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-			<!--[if lt IE 9]>
-				<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-				<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-			<![endif]-->
 			</head>
 			<body>
 				<!-- INICIA HEADER-->
