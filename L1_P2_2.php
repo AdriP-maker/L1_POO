@@ -39,10 +39,10 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse navbar-ex1-collapse">
 							<ul class="nav navbar-nav">
-								<li ><a href="/L1_P1.php">Programa 1</a></li>
+								<li ><a href="L1_P1.php">Programa 1</a></li>
 								<li class="active"><a href="L1_P2_2.php">Programa 2 - Daniel Ubarte</a></li>
-								<li ><a href="/L1_P2_1.php">Programa 2 - Jose Ortega</a></li>
-								<li ><a href="/L1_P3.php">Programa 3</a></li>
+								<li ><a href="L1_P2_1.php">Programa 2 - Jose Ortega</a></li>
+								<li ><a href="L1_P3.php">Programa 3</a></li>
 							</ul>
 							
 						</div><!-- /.navbar-collapse -->
