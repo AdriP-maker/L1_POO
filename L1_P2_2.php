@@ -69,4 +69,5 @@ unset($_SESSION['articulos'], $_SESSION['subtotal'], $_SESSION['totalCompra'], $
 				<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 				<script src="Hello World"></script>
 			</body>
+			
 			</html>
