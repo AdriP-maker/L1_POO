@@ -19,7 +19,7 @@
 			<body>
 				<!-- INICIA HEADER-->
 				<div class="page-header">
-					<img src="/L1_P2_2/img/logo-utp.png" class="img-logo-header">
+					<img src="./L1_P2_2/img/logo-utp.png" class="img-logo-header">
 				</div>
 				<!-- INICIA HEADER-->
 				<!-- INICIA NAV-->
@@ -39,10 +39,10 @@
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse navbar-ex1-collapse">
 							<ul class="nav navbar-nav">
-								<li ><a href="/L1_P1.php">Programa 1</a></li>
+								<li ><a href="./L1_P1.php">Programa 1</a></li>
 								<li class="active"><a href="L1_P2_2.php">Programa 2 - Daniel Ubarte</a></li>
-								<li ><a href="/L1_P2_1.php">Programa 2 - Jose Ortega</a></li>
-								<li ><a href="/L1_P3.php">Programa 3</a></li>
+								<li ><a href="./L1_P2_1.php">Programa 2 - Jose Ortega</a></li>
+								<li ><a href="./L1_P3.php">Programa 3</a></li>
 							</ul>
 							
 						</div><!-- /.navbar-collapse -->
@@ -63,7 +63,7 @@
 								<div class="panel panel-default">
 									<div class="panel-body" id="formulario"> <!-- INICIA PANEL-->
 										<div></div>
-										<form action="/L1_P2_2/php/procesar.php" method="POST" role="form"> <!-- INCIA FORM -->
+										<form action="./L1_P2_2/php/procesar.php" method="POST" role="form"> <!-- INCIA FORM -->
 											<legend><h1>Programa 2</h1></legend>  
 											<fieldset> <!-- INCIA CAMPO CUADERNOS -->
 												<div class="panel panel-default"> <!-- INCIA CAMPO CUADERNOS PANEL -->
@@ -182,7 +182,7 @@
 				<!-- INICIA FOOTER-->
 				<div class="panel panel-default">
 					<div class="panel-body" id="panel-footer">
-						<img src="/L1_P2_2/img/logo-utp.png" class="img-logo-footer">
+						<img src="./L1_P2_2/img/logo-utp.png" class="img-logo-footer">
 						<div class="contenido-footer">
 							<h3>Universidad Tecnológica de Panamá</h3>
 							<h4>Centro Regional De Cocle</h4>
