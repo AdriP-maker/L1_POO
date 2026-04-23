@@ -1,15 +1,13 @@
 <?php
-/* Inicio de la logica para CLASE ANGULO*/
+
 class Angulo
 {
-
     // Variable privada para almacenar el ángulo en grados
     private $grados;
 
     /* Constructor que recibe el valor del ángulo y valida que sea numero*/
     public function __construct($grados)
     {
-
         // Quita el símbolo de grados si existe
         $grados = str_replace('°', '', $grados);
 
@@ -18,7 +16,7 @@ class Angulo
             throw new Exception("El valor del ángulo debe ser numérico.");
         }
         // Asigna el valor a la variable
-        $this->grados = $grados;
+        $this->grados = (float)$grados;
     }
 
     // Convierte grados a radianes
@@ -45,14 +43,11 @@ class Angulo
         return tan($this->getRadianes());
     }
 
-    /*
-    Determina el cuadrante del ángulo
-    */
+    /* Determina el cuadrante del ángulo */
     public function getCuadrante()
     {
-
-        // Ajusta el ángulo dentro de 0-360
-        $angulo = $this->grados % 360;
+        // Para soportar los decimales
+        $angulo = fmod($this->grados, 360);
 
         if ($angulo == 0 || $angulo == 90 || $angulo == 180 || $angulo == 270) {
             return "Eje";
@@ -68,87 +63,51 @@ class Angulo
     }
 }
 
-/* Manejo de datos y excepciones*/
-
-// Variable para guardar resultados
+/* Manejo de datos y excepciones */
 $resultado = null;
-
-// Variable para errores
 $error = "";
 
-// Verifica si el formulario fue enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
     try {
-        // Captura el valor ingresado
         $anguloInput = $_POST["angulo"];
-
-        // Crea objeto de la clase Angulo
         $angulo = new Angulo($anguloInput);
 
-        // Guarda resultados en un arreglo
         $resultado = [
-            "grados" => $anguloInput,
-            "radianes" => $angulo->getRadianes(),
-            "seno" => $angulo->getSeno(),
-            "coseno" => $angulo->getCoseno(),
-            "tangente" => $angulo->getTangente(),
+            "grados"    => $anguloInput,
+            "radianes"  => $angulo->getRadianes(),
+            "seno"      => $angulo->getSeno(),
+            "coseno"    => $angulo->getCoseno(),
+            "tangente"  => $angulo->getTangente(),
             "cuadrante" => $angulo->getCuadrante()
         ];
     } catch (Exception $e) {
-        // Captura error y lo guarda
         $error = $e->getMessage();
     }
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
+<!-- Titulo -->
+<h2 class="page-title">Cálculo de Ángulos</h2>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Ángulos</title>
+<!-- Inicia formulario -->
+<?php include(__DIR__ . "/../html/formulario.html"); ?>
+<!-- Termina formulario -->
 
-    <!-- Enlace a CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-
-<body>
-
-    <!-- Contenido Principal -->
-    <div class="main-content">
-
-        <!-- Tarjeta principal -->
-        <div class="card">
-
-            <!-- Titulo -->
-            <h2 class="page-title">Cálculo de Ángulos</h2>
-
-            <!-- Inicia formulario -->
-            <?php include("./html/formulario.html"); ?>
-            <!-- Termina formulario -->
-
-            <!-- Mensaje de error -->
-            <?php if (!empty($error)): ?>
-                <div class="error-msg">
-                    <?= htmlspecialchars($error) ?>
-                </div>
-            <?php endif; ?>
-
-            <!-- Resultados -->
-            <?php if ($resultado): ?>
-                <div class="resultado">
-                    <p><strong>Grados:</strong> <?= htmlspecialchars($resultado["grados"]) ?></p>
-                    <p><strong>Radianes:</strong> <?= round($resultado["radianes"], 4) ?></p>
-                    <p><strong>Sen:</strong> <?= round($resultado["seno"],     4) ?></p>
-                    <p><strong>Cos:</strong> <?= round($resultado["coseno"],   4) ?></p>
-                    <p><strong>Tan:</strong> <?= round($resultado["tangente"], 4) ?></p>
-                    <p><strong>Cuadrante:</strong> <?= htmlspecialchars($resultado["cuadrante"]) ?></p>
-                </div>
-            <?php endif; ?>
-        </div>
+<!-- Mensaje de error -->
+<?php if (!empty($error)): ?>
+    <div class="error-msg">
+        <?= htmlspecialchars($error) ?>
     </div>
+<?php endif; ?>
 
-</body>
-
-</html>
+<!-- Resultados -->
+<?php if ($resultado): ?>
+    <div class="alert alert-success mt-3">
+        <p><strong>Grados:</strong>    <?= htmlspecialchars($resultado["grados"]) ?></p>
+        <p><strong>Radianes:</strong>  <?= round($resultado["radianes"], 4) ?></p>
+        <p><strong>Sen:</strong>       <?= round($resultado["seno"],     4) ?></p>
+        <p><strong>Cos:</strong>       <?= round($resultado["coseno"],   4) ?></p>
+        <p><strong>Tan:</strong>       <?= round($resultado["tangente"], 4) ?></p>
+        <p><strong>Cuadrante:</strong> <?= htmlspecialchars($resultado["cuadrante"]) ?></p>
+    </div>
+<?php endif; ?>

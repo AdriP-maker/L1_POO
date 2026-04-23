@@ -1,9 +1,9 @@
-<!-- Formulario -->
 <form method="POST">
-    <div class="form-group">
-        <label>Ingrese el ángulo en grados</label>
+    <div class="mb-3">
+        <label class="form-label">Ingrese el ángulo en grados</label>
         <input 
             type="text" 
+            class="form-control"
             name="angulo" 
             required 
             placeholder="Ejemplo 5 o 5°" 
@@ -12,7 +12,9 @@
             oninput="this.value = this.value.replace(/[^0-9.°]/g, '')">
     </div>
 
-    <button type="submit" class="btn-submit">Calcular</button>
-    <button type="button" class="btn-clear" 
-        onclick="window.location.href='index.php?pagina=angulos'">Limpiar</button>
+    <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary">Calcular</button>
+        <button type="button" class="btn btn-outline-secondary" 
+            onclick="window.location.href='L1_P3.php?pagina=angulos'">Limpiar</button>
+    </div>
 </form>
