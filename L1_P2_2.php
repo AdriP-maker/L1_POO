@@ -8,7 +8,7 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-		<link rel="stylesheet" href="/L1_P2_2/css/estilos.css">
+		<link rel="stylesheet" href="./L1_P2_2/css/estilos.css">
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 			<!--[if lt IE 9]>
@@ -40,7 +40,7 @@
 						<div class="collapse navbar-collapse navbar-ex1-collapse">
 							<ul class="nav navbar-nav">
 								<li ><a href="./L1_P1.php">Programa 1</a></li>
-								<li class="active"><a href="L1_P2_2.php">Programa 2 - Daniel Ubarte</a></li>
+								<li class="active"><a href="L1_P2_2.php">Programa 2 - Miguel Gómez</a></li>
 								<li ><a href="./L1_P2_1.php">Programa 2 - Jose Ortega</a></li>
 								<li ><a href="./L1_P3.php">Programa 3</a></li>
 							</ul>
@@ -199,7 +199,7 @@
 				<!-- TERMINA FOOTER-->
 				
 				<!-- jQuery -->
-				<script src="//code.jquery.com/jquery.js"></script>
+				<script src="./code.jquery.com/jquery.js"></script>
 				<!-- Bootstrap JavaScript -->
 				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 				<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
